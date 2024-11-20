@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="cron_delete_empty_classes" model="ir.cron">
+            <field name="name">delete empty classes</field>
+            <field name="active" eval="True"></field><!--set the action to be active -->
+            <field name="priority">10</field><!--gives a priority among other actions -->
+            <field name="interval_type">days</field>
+            <field name="interval_number">1</field>
+            <field name="numbercall">-1</field><!--number of time to be called (-1 means infinit) -->
+            <field name="nextcall" eval="(datetime.utcnow() + timedelta(days=0)).strftime('%Y-%m-%d 11:22:00')"></field>
+            <field name="model_id" ref="gestion_scolaire.model_gestion_scolaire_cleaner"/>
+            <field name="state">code</field>
+            <field name="code">model.delete_empty_classes()</field>
+        </record>
+    </data>
+</odoo>

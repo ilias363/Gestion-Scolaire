@@ -1,0 +1,3 @@
+<odoo>
+    <menuitem id="menu_gestion_scolaire" name="Gestion Scolaire" sequence="1"/>
+</odoo>

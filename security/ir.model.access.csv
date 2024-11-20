@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gestion_scolaire_classe,access_gestion_scolaire_classe,model_gestion_scolaire_classe,base.group_user,1,1,1,1
+access_gestion_scolaire_etudiant,access_gestion_scolaire_etudiant,model_gestion_scolaire_etudiant,base.group_user,1,1,1,1
+access_gestion_scolaire_formateur,access_gestion_scolaire_formateur,model_gestion_scolaire_formateur,base.group_user,1,1,1,1
+access_gestion_scolaire_filiere,access_gestion_scolaire_filiere,model_gestion_scolaire_filiere,base.group_user,1,1,1,1
+access_wizard_test_user,wizard.test,model_wizard_test,base.group_user,1,1,1,1

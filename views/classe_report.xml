@@ -1,0 +1,66 @@
+<odoo>
+    <record id="classe_report" model="ir.actions.report">
+        <field name="name">Presence des etudiants</field>
+        <field name="model">gestion_scolaire.classe</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gestion_scolaire.classe_report_template</field>
+        <field name="print_report_name">'Classe - %s' % (object.code)</field>
+        <field name="binding_view_types">tree,form</field>
+    </record>
+
+    <template id="classe_report_template">
+        <t t-call="web.html_container">
+            <style>
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 5px;
+                    text-align: center;
+                }
+                .page-break {
+                    page-break-before: always;
+                }
+                .day {
+                    width: 12%;
+                }
+            </style>
+
+            <t t-foreach="docs" t-as="doc">
+                <div class='page-break'><h1 align="center">Feuille de presence</h1>
+                
+                <p>Date: <t t-esc="time.strftime('%d/%m/%Y')"/></p>
+                <p>Classe: <t t-esc="doc.code"/></p>
+                <p>Filiere: <t t-esc="doc.filiere_id.nom"/></p>
+                <br/>
+                <table>
+                    <tr>
+                        <th>Etudiant</th>
+                        <th class='day' colspan="2">Lundi</th>
+                        <th class='day' colspan="2">Mardi</th>
+                        <th class='day' colspan="2">Mercredi</th>
+                        <th class='day' colspan="2">Jeudi</th>
+                        <th class='day' colspan="2">Vendredi</th>
+                    </tr>
+                    <t t-foreach="doc.etudiant_ids" t-as="etudiant">
+                        <tr>
+                            <td><t t-esc="etudiant.nom"/> <t t-esc="etudiant.prenom"/></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </t>
+                </table></div>
+            </t>
+        </t>
+    </template>
+</odoo>

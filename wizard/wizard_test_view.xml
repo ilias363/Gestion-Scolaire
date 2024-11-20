@@ -1,0 +1,29 @@
+<odoo>
+    <!-- Wizard View -->
+    <record id="wizard_test_view_form" model="ir.ui.view">
+        <field name="name">wizard.test.view.form</field>
+        <field name="model">wizard.test</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                </group>
+                <footer>
+                    <button name="button_do_something" type="object" string="Ok" class="btn-primary"/>
+                    <button special="cancel" string="Annuler" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record id="action_wizard_test" model="ir.actions.act_window">
+        <field name="name">Test Wizard</field>
+        <field name="res_model">wizard.test</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_wizard_test" name="Test Wizard" parent="menu_gestion_scolaire" action="action_wizard_test" sequence="99" />
+</odoo>

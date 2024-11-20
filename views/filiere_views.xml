@@ -1,0 +1,60 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_filiere_form" model="ir.ui.view">
+        <field name="name">filiere.form</field>
+        <field name="model">gestion_scolaire.filiere</field>
+        <field name="arch" type="xml">
+            <form string="Filiere">
+                <sheet>
+                    <group>
+                        <field name="nom"/>
+                        <field name="code"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_filiere_tree" model="ir.ui.view">
+        <field name="name">filiere.tree</field>
+        <field name="model">gestion_scolaire.filiere</field>
+        <field name="arch" type="xml">
+            <tree string="Filiere">
+                <field name="nom"/>
+                <field name="code"/>
+                <field name="formateur_ids"/>
+                <field name="classe_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_filiere_search" model="ir.ui.view">
+        <field name="name">filiere.search</field>
+        <field name="model">gestion_scolaire.filiere</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher Filiere">
+                <field name="nom"/>
+                <field name="code"/>
+                <field name="formateur_ids"/>
+                <field name="classe_ids"/>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_filiere" model="ir.actions.act_window">
+        <field name="name">Filieres</field>
+        <field name="res_model">gestion_scolaire.filiere</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Ajoutez une Filiere
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_gestion_scolaire_filiere" name="Filieres" parent="menu_gestion_scolaire" action="action_filiere" sequence="4"/>
+</odoo>

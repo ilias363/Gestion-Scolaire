@@ -1,0 +1,67 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_formateur_form" model="ir.ui.view">
+        <field name="name">formateur.form</field>
+        <field name="model">gestion_scolaire.formateur</field>
+        <field name="arch" type="xml">
+            <form string="Formateur">
+                <sheet>
+                    <group>
+                        <field name="nom"/>
+                        <field name="prenom"/>
+                        <field name="date_embauche"/>
+                        <field name="date_fin_service"/>
+                        <field name="experience"/>
+                        <field name="filiere_ids"/>
+                        <field name="classe_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_formateur_tree" model="ir.ui.view">
+        <field name="name">formateur.tree</field>
+        <field name="model">gestion_scolaire.formateur</field>
+        <field name="arch" type="xml">
+            <tree string="Formateur">
+                <field name="nom"/>
+                <field name="prenom"/>
+                <field name="classe_ids"/>
+                <field name="date_embauche"/>
+                <field name="date_fin_service"/>
+                <field name="experience"/>
+                <field name="filiere_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_formateur_search" model="ir.ui.view">
+        <field name="name">formateur.search</field>
+        <field name="model">gestion_scolaire.formateur</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher Formateur">
+                <field name="nom"/>
+                <field name="prenom"/>
+                <field name="experience"/>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_formateur" model="ir.actions.act_window">
+        <field name="name">Formateurs</field>
+        <field name="res_model">gestion_scolaire.formateur</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Ajoutez un Formateur
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_gestion_scolaire_formateur" name="Formateurs" parent="menu_gestion_scolaire" action="action_formateur" sequence="2"/>
+</odoo>

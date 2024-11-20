@@ -1,0 +1,77 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_etudiant_form" model="ir.ui.view">
+        <field name="name">etudiant.form</field>
+        <field name="model">gestion_scolaire.etudiant</field>
+        <field name="arch" type="xml">
+            <form string="Etudiant">
+                <sheet>
+                    <group>
+                        <field name="nom"/>
+                        <field name="prenom"/>
+                        <field name="date_naissance"/>
+                        <field name="age" readonly="1"/>
+                        <field name="classe_id"/>
+                        <field name="inscrit"/>
+                        <button name="open_wizard" type="object" string="Open Wizard" class="btn-primary"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_etudiant_tree" model="ir.ui.view">
+        <field name="name">etudiant.tree</field>
+        <field name="model">gestion_scolaire.etudiant</field>
+        <field name="arch" type="xml">
+            <tree string="Etudiant">
+                <field name="nom"/>
+                <field name="prenom"/>
+                <field name="date_naissance"/>
+                <field name="age"/>
+                <field name="classe_id"/>
+                <field name="inscrit"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_etudiant_search" model="ir.ui.view">
+        <field name="name">etudiant.search</field>
+        <field name="model">gestion_scolaire.etudiant</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher Etudiant">
+                <field name="nom"/>
+                <field name="prenom"/>
+                <field name="classe_id"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_etudiant" model="ir.actions.act_window">
+        <field name="name">Etudiant</field>
+        <field name="res_model">gestion_scolaire.etudiant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Ajoutez un Etudiant
+            </p>
+        </field>
+    </record>
+
+    <record id="action_student_report" model="ir.actions.server">
+        <field name="name">Students Report</field>
+        <field name="model_id" ref="model_gestion_scolaire_etudiant"/>
+        <field name="binding_model_id" ref="model_gestion_scolaire_etudiant"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = env['gestion_scolaire.etudiant'].generate_student_report_action()
+        </field>
+    </record>
+
+    <!-- Menues -->
+    <menuitem id="menu_gestion_scolaire_etudiant" name="Etudiants" parent="menu_gestion_scolaire" sequence="1" action="action_etudiant"/>
+    <menuitem id="menu_student_report" name="Rapport Etudiants" parent="menu_gestion_scolaire" sequence="5" action="action_student_report"/>
+</odoo>
